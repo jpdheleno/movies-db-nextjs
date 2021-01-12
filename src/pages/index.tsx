@@ -24,8 +24,6 @@ interface IMovie {
 const Home: React.FC = ({
   movies
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  console.log(movies);
-
   return (
     <s.Container>
       <Head>
