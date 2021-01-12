@@ -1,2 +1,2 @@
 # Movie-db
-Movies database website.
+Movies database website using Next js.
