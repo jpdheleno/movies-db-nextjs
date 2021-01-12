@@ -29,7 +29,7 @@ const MovieList: React.FC<IProps> = ({ movies }) => {
                 />
                 <s.movieTitle>{movie?.title}</s.movieTitle>
                 <s.movieRatingContainer>
-                  <s.movieRatingStar src="images/movieCard/star.svg" />
+                  <s.movieRatingStar src="/images/movieCard/star.svg" />
                   <s.movieRatingNumber>{movie.rating}</s.movieRatingNumber>
                 </s.movieRatingContainer>
                 <s.movieWatchListContainer>
