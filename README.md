@@ -1,2 +1,2 @@
 # Movie-db
-Movie database website.
+Movies database website.
