@@ -26,9 +26,6 @@ interface IActor {
 }
 
 const movie: React.FC<IProps> = ({ generalInfo, productionInfo }) => {
-  console.log(generalInfo);
-  console.log(productionInfo);
-
   return (
     <div>
       <Head>
@@ -51,6 +48,9 @@ export const getServerSideProps: GetServerSideProps = async context => {
 
   const generalInfoRes = await axios.get(`/movie/${id}`);
   const productionInfoRes = await axios.get(`/movie/${id}/credits`);
+
+  console.log(generalInfoRes);
+  console.log(productionInfoRes);
 
   const generalInfo: IGeneralInfo = {
     title: generalInfoRes.data.title,
