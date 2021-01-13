@@ -11,35 +11,35 @@ interface IMovie {
 }
 
 interface IProps {
-  movies: IMovie[];
+  movieList: IMovie[];
 }
 
-const MovieList: React.FC<IProps> = ({ movies }) => {
+const MovieList: React.FC<IProps> = ({ movieList }) => {
   return (
-    <s.MovieListContainer>
-      <s.MovieListTitle>Popular movies</s.MovieListTitle>
+    <s.Container>
+      <s.Title>Popular movies</s.Title>
 
-      <s.MovieListContent>
-        {movies &&
-          movies.map(movie => {
+      <s.Content>
+        {movieList &&
+          movieList.map(movie => {
             return (
-              <s.movieContainer key={movie.id}>
-                <s.movieImage
+              <s.MovieContainer key={movie.id}>
+                <s.MovieImage
                   src={`https://image.tmdb.org/t/p/original${movie.posterPath}`}
                 />
-                <s.movieTitle>{movie?.title}</s.movieTitle>
-                <s.movieRatingContainer>
-                  <s.movieRatingStar src="/images/movieCard/star.svg" />
-                  <s.movieRatingNumber>{movie.rating}</s.movieRatingNumber>
-                </s.movieRatingContainer>
-                <s.movieWatchListContainer>
+                <s.MovieTitle>{movie?.title}</s.MovieTitle>
+                <s.MovieRatingContainer>
+                  <s.MovieRatingStar src="/images/movieCard/star.svg" />
+                  <s.MovieRatingNumber>{movie.rating}</s.MovieRatingNumber>
+                </s.MovieRatingContainer>
+                <s.MovieWatchListContainer>
                   + Watchlist
-                </s.movieWatchListContainer>
-              </s.movieContainer>
+                </s.MovieWatchListContainer>
+              </s.MovieContainer>
             );
           })}
-      </s.MovieListContent>
-    </s.MovieListContainer>
+      </s.Content>
+    </s.Container>
   );
 };
 

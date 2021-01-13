@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-export const MovieListContainer = styled.div`
+export const Container = styled.div`
   margin-left: 3%;
   margin-right: 3%;
 `;
 
-export const MovieListTitle = styled.h1`
+export const Title = styled.h1`
   &:before {
     content: '';
     border: 2px solid #efce4a;
@@ -18,13 +18,13 @@ export const MovieListTitle = styled.h1`
   color: #ffffff;
 `;
 
-export const MovieListContent = styled.div`
+export const Content = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 `;
 // Single Movie Card
-export const movieContainer = styled.div`
+export const MovieContainer = styled.div`
   width: 15%;
   min-width: 175px;
   background: #141414;
@@ -36,7 +36,7 @@ export const movieContainer = styled.div`
   border-radius: 5px;
 `;
 
-export const movieImage = styled.img`
+export const MovieImage = styled.img`
   width: 100%;
   transition: 0.1s ease-in all;
   border-radius: 5px;
@@ -47,7 +47,7 @@ export const movieImage = styled.img`
   }
 `;
 
-export const movieTitle = styled.div`
+export const MovieTitle = styled.div`
   margin-top: 5px;
   color: white;
   /* white-space: nowrap;     */
@@ -59,22 +59,22 @@ export const movieTitle = styled.div`
   }
 `;
 
-export const movieRatingContainer = styled.div`
+export const MovieRatingContainer = styled.div`
   margin-top: 5px;
   display: flex;
 `;
 
-export const movieRatingStar = styled.img`
+export const MovieRatingStar = styled.img`
   width: 16px;
 `;
 
-export const movieRatingNumber = styled.div`
+export const MovieRatingNumber = styled.div`
   font-weight: bold;
   color: grey;
   margin-left: 10px;
 `;
 
-export const movieWatchListContainer = styled.div`
+export const MovieWatchListContainer = styled.div`
   color: #ffffff;
   font-weight: bold;
   background: #232323;

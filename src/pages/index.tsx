@@ -6,12 +6,13 @@ import * as s from '../styles/pages/Home';
 import axios from '../services/axios';
 import requests from '../services/requests';
 
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { GetServerSideProps } from 'next';
 
 // Components
 import Navbar from '../components/Navbar';
 import LatestMovieHeader from '../components/LatestMovieHeader';
 import MovieList from '../components/MovieList';
+
 interface IMovie {
   id: number;
   title: string;
@@ -20,10 +21,11 @@ interface IMovie {
   backdropPath: string;
   posterPath: string;
 }
+interface IProps {
+  movies: IMovie[];
+}
 
-const Home: React.FC = ({
-  movies
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Home: React.FC<IProps> = ({ movies }) => {
   return (
     <s.Container>
       <Head>
@@ -36,7 +38,7 @@ const Home: React.FC = ({
         title={movies[0]?.title}
         description={movies[0]?.description}
       />
-      <MovieList movies={movies} />
+      <MovieList movieList={movies} />
     </s.Container>
   );
 };
@@ -60,8 +62,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
       };
     }
   );
-
-  console.log(movies);
 
   return {
     props: { movies }
