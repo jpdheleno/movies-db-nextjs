@@ -39,6 +39,9 @@ const movie: React.FC<IProps> = ({ generalInfo, productionInfo }) => {
 
       <h1>{generalInfo.title}</h1>
       <span>{generalInfo.description}</span>
+      {productionInfo.cast.map((actor: IActor) => {
+        return <p key={actor.name}>{actor.name}</p>;
+      })}
     </div>
   );
 };
@@ -54,13 +57,13 @@ export const getServerSideProps: GetServerSideProps = async context => {
     description: generalInfoRes.data.overview
   };
 
-  const productionInfo: IProductionInfo[] = productionInfoRes.data.cast.map(
-    ({ name }) => {
+  const productionInfo: IProductionInfo = {
+    cast: productionInfoRes.data.cast.map(({ name }) => {
       return {
         name
       } as IActor;
-    }
-  );
+    })
+  };
   return {
     props: { generalInfo, productionInfo }
   };
