@@ -23,6 +23,7 @@ const MovieList: React.FC<IProps> = ({ movieList }) => {
         {movieList &&
           movieList.map(movie => {
             return (
+              // TO-DO: Move that into MovieCard Component
               <s.MovieContainer key={movie.id}>
                 <s.MovieImage
                   src={`https://image.tmdb.org/t/p/original${movie.posterPath}`}
