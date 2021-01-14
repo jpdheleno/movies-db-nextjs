@@ -50,9 +50,13 @@ const movie: React.FC<IProps> = ({ generalInfo, productionInfo }) => {
       <p>Actors: </p>
       {productionInfo.cast.map((actor: IActor) => {
         return (
-          <p key={actor.name}>
-            {actor.name} {actor.profilePath}
-          </p>
+          <>
+            <p key={actor.name}>{actor.name}</p>
+            <img
+              src={`https://image.tmdb.org/t/p/original${actor.profilePath}`}
+              style={{ height: '100px', objectFit: 'contain' }}
+            />
+          </>
         );
       })}
     </div>
