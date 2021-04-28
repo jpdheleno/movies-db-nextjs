@@ -1,6 +1,8 @@
 import React from 'react';
 import * as s from '../styles/components/MovieList';
 
+import MovieCard from './MovieCard';
+
 interface IMovie {
   id: number;
   title: string;
@@ -22,22 +24,7 @@ const MovieList: React.FC<IProps> = ({ movieList }) => {
       <s.Content>
         {movieList &&
           movieList.map(movie => {
-            return (
-              // TO-DO: Move that into MovieCard Component
-              <s.MovieContainer key={movie.id}>
-                <s.MovieImage
-                  src={`https://image.tmdb.org/t/p/original${movie.posterPath}`}
-                />
-                <s.MovieTitle>{movie?.title}</s.MovieTitle>
-                <s.MovieRatingContainer>
-                  <s.MovieRatingStar src="/images/movieCard/star.svg" />
-                  <s.MovieRatingNumber>{movie.rating}</s.MovieRatingNumber>
-                </s.MovieRatingContainer>
-                <s.MovieWatchListContainer>
-                  + Watchlist
-                </s.MovieWatchListContainer>
-              </s.MovieContainer>
-            );
+            return <MovieCard movie={movie} key={movie.id} />;
           })}
       </s.Content>
     </s.Container>

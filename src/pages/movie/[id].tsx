@@ -7,6 +7,7 @@ import { GetServerSideProps } from 'next';
 
 // Components
 import Navbar from '../../components/Navbar';
+import MovieInfo from '../../components/MovieInfo';
 
 interface IProps {
   generalInfo: IGeneralInfo;
@@ -20,7 +21,17 @@ interface IGeneralInfo {
   revenue: number;
   runtime: number;
   tagline: string;
+  posterPath: string;
+  backdropPath: string;
+  releaseDate: string;
+  genres: IGenres[];
+
   // budget, revenue, runtime, release_date, genres [id, name], vote_average, tagline
+}
+
+interface IGenres {
+  id: number;
+  name: string;
 }
 
 interface IProductionInfo {
@@ -41,24 +52,7 @@ const movie: React.FC<IProps> = ({ generalInfo, productionInfo }) => {
 
       <Navbar />
 
-      <h1>{generalInfo.title}</h1>
-      <h2>{generalInfo.tagline}</h2>
-      <p>{generalInfo.description}</p>
-      <p>Budget: {generalInfo.budget} $</p>
-      <p>Revenue: {generalInfo.revenue} $</p>
-      <p>Duration: {generalInfo.runtime} minutes</p>
-      <p>Actors: </p>
-      {productionInfo.cast.map((actor: IActor) => {
-        return (
-          <>
-            <p key={actor.name}>{actor.name}</p>
-            <img
-              src={`https://image.tmdb.org/t/p/original${actor.profilePath}`}
-              style={{ height: '100px', objectFit: 'contain' }}
-            />
-          </>
-        );
-      })}
+      <MovieInfo generalInfo={generalInfo} productionInfo={productionInfo} />
     </div>
   );
 };
@@ -79,7 +73,11 @@ export const getServerSideProps: GetServerSideProps = async context => {
     budget: generalInfoRes.data.budget,
     revenue: generalInfoRes.data.revenue,
     runtime: generalInfoRes.data.runtime,
-    tagline: generalInfoRes.data.tagline
+    tagline: generalInfoRes.data.tagline,
+    posterPath: generalInfoRes.data.poster_path,
+    backdropPath: generalInfoRes.data.backdrop_path,
+    releaseDate: generalInfoRes.data.release_date,
+    genres: generalInfoRes.data.genres
   };
 
   const productionInfo: IProductionInfo = {
